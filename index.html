@@ -60,15 +60,15 @@ html, body {
 						
 						
 						
-#controls input{width:25%;height:6em;background-color: rgba(255,255,255,0.3); outline:none;}
+#controls input{width:25%;height:6em;background-color:rgba(255,255,255,0.3); outline:none;}
+
+input#touchStart, input#touchLeft, input#touchRight{
+	background-color: rgba(80,255,0,0.2); 
+}
 
 input#touchRight, input#touchLeft{
 	width:15%;
-	 	
-}
-
-input#touchStart{
-	background-color: rgba(80,255,0,0.3); 
+	background-color: rgba(122,80,10,0.2); 	
 }
 						
 #hud #speed            { float: right; }
@@ -76,8 +76,8 @@ input#touchStart{
 #hud #last_lap_time    { float: left; display: none;}
 #hud #fast_lap_time    { display: block; width: 12em;  margin: 0 auto; text-align: center; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
 #hud .value            { color: yellow; font-weight: bold; }
-#hud .fastest          { background-color: rgba(255,215,0,0.5); }
-#hud input			   { background-color:rgba(255,215,0,0.5); color:#dfcf00; border-radius: 5px; outline: none;}
+#hud .fastest          { background-color: rgba(255,215,0,0.3); }
+#hud input			   { background-color:rgba(255,215,0,0.3); color:#dfcf00; border-radius: 5px; outline: none;}
 
 
 </style>
@@ -94,9 +94,9 @@ input#touchStart{
     </div>
  
  <div id="controls">
-	<input type="button" id="touchStart" style="float:right;" />
-	<input type="button" id="touchLeft" style="float:left;"/>
-	<input type="button" id="touchRight" style="float:left;"/>
+	<input type="button" id="touchStart" value="USE UP ARROW OR W" style="float:right;" >
+	<input type="button" id="touchLeft" value="USE LEFT OR A" style="float:left;"> 
+	<input type="button" id="touchRight" value="USE RIGHT OR D"style="float:left;"> 
  </div>
  
  
