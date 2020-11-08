@@ -13,7 +13,7 @@ html, body {
   background-color:#000;
 }
 	
-#mute         { background-position:   0px 0px; width: 32px; height: 32px; background: url(images/mute.png); display: inline-block; cursor: pointer; position: absolute; margin-left: 0em; }
+#mute         { background-position:   0px 0px; width: 32px; height: 32px; background: url(./images/mute.png); display: inline-block; cursor: pointer; position: absolute; margin-left: 0em; }
 #mute.on      { background-position: -32px 0px; }
 
 #hud				   { 
@@ -168,7 +168,8 @@ function fullscreenify(canvas) {
   function createPitchStep(n) {
     return function(e) {
 	
-	   if (e.keyCode == 38) {
+	
+	   if (e.keyCode == 38 || e.keyCode == 87) {
         pitch.step = n;
       }
     

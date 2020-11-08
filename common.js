@@ -169,11 +169,15 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
         }
       }
     };
+    
+
+    
+    
     Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
     Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
   },
 
-  //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
 
   //~ stats: function(parentId, id) { // construct mr.doobs FPS counter - along with friendly good/bad/ok message box
 
