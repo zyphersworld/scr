@@ -40,6 +40,37 @@ html, body {
 						-moz-box-sizing: border-box; 
 						-webkit-box-sizing: border-box; 
 						color:#ccbbba;}
+						
+						
+#controls
+				   { 
+						position:absolute; 
+						z-index: 1; 
+						width: 100%; 
+						margin:0px auto;
+						bottom:15px;
+						padding: 0px 0px; 
+						font-family: sans-serif; 
+						background-color: rgba(255,0,0,0.0); 
+						border-bottom: 0px solid black; 
+						box-sizing: border-box; 
+						-moz-box-sizing: border-box; 
+						-webkit-box-sizing: border-box; 
+						color:#ccbbba;}
+						
+						
+						
+#controls input{width:25%;height:6em;background-color: rgba(255,255,255,0.3); outline:none;}
+
+input#touchRight, input#touchLeft{
+	width:15%;
+	 	
+}
+
+input#touchStart{
+	background-color: rgba(80,255,0,0.3); 
+}
+						
 #hud #speed            { float: right; }
 #hud #current_lap_time { float: left;  }
 #hud #last_lap_time    { float: left; display: none;}
@@ -62,10 +93,18 @@ html, body {
       <span><span id="mute" class="on"></span></span> 
     </div>
  
- <canvas id="canvas">
+ <div id="controls">
+	<input type="button" id="touchStart" style="float:right;" />
+	<input type="button" id="touchLeft" style="float:left;"/>
+	<input type="button" id="touchRight" style="float:left;"/>
+ </div>
+ 
+ 
+  <canvas id="canvas">
       Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
     </canvas>
  </div>
+ 
  
  <audio id='music'>
     <source src="./music/racer.mp3">
