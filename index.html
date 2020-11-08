@@ -1,6 +1,16 @@
 <!DOCTYPE html> 
 <html>
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKVWZLGYR0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HKVWZLGYR0');
+</script>
+	
   <title>SCR Version 0.01 pre-alpha</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <!--  <link href="common.css" rel="stylesheet" type="text/css" /> -->
@@ -156,7 +166,7 @@ function fullscreenify(canvas) {
 //######################################################################	
 
  var start = document.getElementById("start"),
-      stop = document.getElementById("stop"),
+     stop = document.getElementById("stop"),
       
       audioCtx = new (window.AudioContext || window.webkitAudioContext)(),
 
@@ -167,13 +177,9 @@ function fullscreenify(canvas) {
 //######################################################################	
   function createPitchStep(n) {
     return function(e) {
-	
-	
-	   if (e.keyCode == 38 || e.keyCode == 87) {
+		if (e.keyCode == 38 || e.keyCode == 87) {
         pitch.step = n;
       }
-    
-    
     }
   }
 //######################################################################	
@@ -184,7 +190,8 @@ function fullscreenify(canvas) {
   var audioData = this.response;
   window.addEventListener("keydown", createPitchStep(0.08))
   window.addEventListener("keyup", createPitchStep(-0.083))
-  
+  // btnUp.addEventListener("touchstart", createPitchStep(0.08));
+ 
 //######################################################################	
   start.addEventListener("click", function(e){
 	if (!source) {
@@ -209,7 +216,9 @@ function fullscreenify(canvas) {
 								source.playbackRate.value += pitch.step;
 		          }
         }, 50);
-     } 
+     }else{
+		 source=null;
+	 } 
     });	
 //######################################################################	      
 
