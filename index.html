@@ -168,6 +168,11 @@ var elem = document.documentElement;
 function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
+    
+         var canvas = document.getElementById('canvas');
+        fullscreenify(document.getElementById('racer'));
+        fullscreenify(canvas);
+    
   } else if (elem.webkitRequestFullscreen) { /* Safari */
     elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { /* IE11 */
@@ -178,6 +183,9 @@ function openFullscreen() {
 function closeFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
+     var canvas = document.getElementById('canvas');
+        fullscreenify(document.getElementById('racer'));
+        fullscreenify(canvas);
   } else if (document.webkitExitFullscreen) { /* Safari */
     document.webkitExitFullscreen();
   } else if (document.msExitFullscreen) { /* IE11 */
@@ -199,16 +207,16 @@ window.addEventListener(
 );
 
 
-window.addEventListener(
-    'onchange',
-    function () {
-        var canvas = document.getElementById('canvas');
-        fullscreenify(document.getElementById('racer'));
-        fullscreenify(canvas);
+//~ window.addEventListener(
+    //~ 'onchange',
+    //~ function () {
+        //~ var canvas = document.getElementById('canvas');
+        //~ fullscreenify(document.getElementById('racer'));
+        //~ fullscreenify(canvas);
         
-    },
-    false
-);
+    //~ },
+    //~ false
+//~ );
 
 
 function fullscreenify(canvas) {
