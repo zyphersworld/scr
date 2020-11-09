@@ -52,7 +52,7 @@ html, body {
 						z-index: 1; 
 						width: 80%; 
 						margin:0px auto;
-						bottom:15px;
+						bottom:0px;
 						left:10%;
 						padding: 0px 0px; 
 						font-family: sans-serif; 
@@ -61,14 +61,17 @@ html, body {
 						-moz-box-sizing: border-box; 
 						-webkit-box-sizing: border-box; 
 						color:#ccbbba;
+						background-color: rgba(255,255,255,0.2);
 						
 						
 }
 						
-						
-						
-#controls{
 	
+						
+#controls #controlContainer{
+  bottom: 0;
+  left: 0;
+vertical-align:middle;
 }
 
 input#touchStart, input#touchLeft, input#touchRight, input#start{
@@ -88,17 +91,22 @@ input#touchRight, input#touchLeft{
 	margin: 0px 0.2em;
 }
 
-input#touchStart{
+input#touchStart, {
+	
 	width:15%;
 	margin:0px 1em;
 	float:right; 	
 }
 
+input#fs, input#xfs{
+	
+	}
+
 input#start{
 	width:8%;
 	font-size:1em;
 }
-input#mute    { background-position:0px 0px; width: 32px; height: 32px; background: url(./images/mute.png); display: inline-block; cursor: pointer;float:right;}
+input#mute    { background-position:0px 0px; width: 32px; height: 32px; background: url(./images/mute.png); display: inline-block; cursor: pointer;}
 #mute.on      { background-position: -32px 0px; }
 
 #hud #speed            { float: right; }
@@ -108,6 +116,8 @@ input#mute    { background-position:0px 0px; width: 32px; height: 32px; backgrou
 #hud .value            { color: yellow; font-weight: bold; }
 #hud .fastest          { background-color: rgba(255,215,0,0.3); }
 #hud input			   { background-color:rgba(255,215,0,0.3); color:#dfcf00; border-radius: 5px; outline: none;}
+
+
 
 </style>
 <body> 
@@ -122,14 +132,15 @@ input#mute    { background-position:0px 0px; width: 32px; height: 32px; backgrou
     </div>
  
  <div id="controls">
-	
+	<div id="controlContainer">
 	<input type="button" id="touchStart" value="&#8593;" style="float:right;" >&nbsp;
 	<input type="button" id="start" value="Start"  />
 	<input type="button" id="mute" class="on" />
-	
+	<input type="button" id="fs" onclick="openFullscreen();" value="FS" />
+	<input type="button" id="xfs" onclick="closeFullscreen();" value="exit FS" />
 	<input type="button" id="touchLeft" value="&#8617;" style="float:left;">&nbsp;
 	<input type="button" id="touchRight" value="&#8618;"style="float:left;"> 
-	
+	</div>
     
 	
  </div>
@@ -148,6 +159,29 @@ input#mute    { background-position:0px 0px; width: 32px; height: 32px; backgrou
  <script src="common.js"></script>
 
 <script>
+
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+
+
 window.addEventListener(
     'load',
     function () {
