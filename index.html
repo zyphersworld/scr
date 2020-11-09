@@ -129,6 +129,8 @@ input#mute    { background-position:0px 0px; width: 32px; height: 32px; backgrou
       <span id="last_lap_time"    class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span>&nbsp;</span> 
       <span id="fast_lap_time"    class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span>&nbsp;</span> 
       <input type="button" id="start" value="Start"  />
+      <input type="button" id="fs" onclick="openFullscreen();" value="FS" />
+	  <input type="button" id="xfs" onclick="closeFullscreen();" value="exit FS" />
     </div>
  
  <div id="controls">
@@ -137,8 +139,7 @@ input#mute    { background-position:0px 0px; width: 32px; height: 32px; backgrou
 	
 	<!--
 	<input type="button" id="mute" class="on" />
-	<input type="button" id="fs" onclick="openFullscreen();" value="FS" />
-	<input type="button" id="xfs" onclick="closeFullscreen();" value="exit FS" />
+	
 	-->
 	<input type="button" id="touchLeft" value="&#8617;" style="float:left;">&nbsp;
 	<input type="button" id="touchRight" value="&#8618;"style="float:left;"> 
