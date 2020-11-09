@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<!--
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKVWZLGYR0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,7 +11,7 @@
 
   gtag('config', 'G-HKVWZLGYR0');
 </script>
--->	
+
   <title>SCR Version 0.01 pre-alpha</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <!--  <link href="common.css" rel="stylesheet" type="text/css" /> -->
@@ -169,10 +169,7 @@ function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
     
-         var canvas = document.getElementById('canvas');
-        fullscreenify(document.getElementById('racer'));
-        fullscreenify(canvas);
-    
+		
   } else if (elem.webkitRequestFullscreen) { /* Safari */
     elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { /* IE11 */
