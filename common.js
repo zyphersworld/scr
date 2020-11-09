@@ -171,6 +171,17 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
     
     Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
     Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
+    
+    Dom.on(document.getElementById("touchStart"), 'touchstart', function(ev) {console.log("up");  onkey(38, 'down'); } );
+    Dom.on(document.getElementById("touchStart"), 'touchend', function(ev) { onkey(38, 'up'); } );
+    
+    
+    Dom.on(document.getElementById("touchLeft"), 'touchstart', function(ev) { console.log("left"); onkey(37, 'down');   } );
+    Dom.on(document.getElementById("touchLeft"), 'touchend',   function(ev) { onkey(37, 'up');   } );
+    
+    Dom.on(document.getElementById("touchRight"), 'touchstart',   function(ev) {console.log("right");  onkey(39, 'down');   } );
+    Dom.on(document.getElementById("touchRight"), 'touchend',   function(ev) { onkey(39, 'up');   } );
+    
   },
 
 //---------------------------------------------------------------------------
@@ -324,7 +335,10 @@ var KEY = {
   A:     65,
   D:     68,
   S:     83,
-  W:     87
+  W:     87,
+  TLEFT: 37,
+  TUP:	 38,
+  TRIGHT:39
 };
 
 var COLORS = {

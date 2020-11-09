@@ -2,6 +2,7 @@
 <html>
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKVWZLGYR0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,7 +11,7 @@
 
   gtag('config', 'G-HKVWZLGYR0');
 </script>
-	
+-->	
   <title>SCR Version 0.01 pre-alpha</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <!--  <link href="common.css" rel="stylesheet" type="text/css" /> -->
@@ -66,28 +67,36 @@ html, body {
 						
 						
 						
-#controls input{width:15%;height:4.20em;background-color:rgba(255,255,255,0.3); outline:none;}
+#controls{
+	
+}
 
 input#touchStart, input#touchLeft, input#touchRight, input#start{
-	color:#bca;background-color: rgba(80,255,0,0.2); 
+	width:33%;
+	height:4.20em;
+	color:#bca;
+	outline:none;
+	background-color: rgba(125,125,125,0.4);
 	border-radius:12px;
+	/*border:0px #000;*/
+	font-size:1.5em;
+	font-weight:bold;
 }
 
 input#touchRight, input#touchLeft{
 	width:8%;
 	margin: 0px 0.2em;
-	background-color: rgba(122,80,10,0.2); 	
 }
 
 input#touchStart{
 	width:10%;
-	background-color: rgba(0,255,10,0.2);
 	margin:0px 1em;
 	float:right; 	
 }
 
 input#start{
 	width:5%;
+	font-size:1em;
 }
 input#mute         { background-position:0px 0px; width: 32px; height: 32px; background: url(./images/mute.png); display: inline-block; cursor: pointer;float:right;}
 #mute.on      { background-position: -32px 0px; }
@@ -114,12 +123,12 @@ input#mute         { background-position:0px 0px; width: 32px; height: 32px; bac
  
  <div id="controls">
 	
-	<input type="button" id="touchStart" value="USE UP ARROW OR W" style="float:right;" >&nbsp;
+	<input type="button" id="touchStart" value="&#8593;" style="float:right;" >&nbsp;
 	<input type="button" id="start" value="Start"  />
 	<input type="button" id="mute" class="on" />
 	
-	<input type="button" id="touchLeft" value="USE LEFT OR A" style="float:left;">&nbsp;
-	<input type="button" id="touchRight" value="USE RIGHT OR D"style="float:left;"> 
+	<input type="button" id="touchLeft" value="&#8617;" style="float:left;">&nbsp;
+	<input type="button" id="touchRight" value="&#8618;"style="float:left;"> 
 	
     
 	
@@ -143,7 +152,9 @@ window.addEventListener(
     'load',
     function () {
         var canvas = document.getElementById('canvas');
+        fullscreenify(document.getElementById('racer'));
         fullscreenify(canvas);
+        
     },
     false
 );
@@ -232,7 +243,9 @@ function fullscreenify(canvas) {
 
  var start = document.getElementById("start"),
      stop = document.getElementById("stop"),
-      
+     tStart = document.getElementById("touchStart"),
+     tLeft =  document.getElementById("touchLeft"),
+     tRight =  document.getElementById("touchRight"),
       audioCtx = new (window.AudioContext || window.webkitAudioContext)(),
 
       xhr = new XMLHttpRequest(),
@@ -242,7 +255,7 @@ function fullscreenify(canvas) {
 //######################################################################	
   function createPitchStep(n) {
     return function(e) {
-		if (e.keyCode == 38 || e.keyCode == 87) {
+		if (e.keyCode == 38 || e.keyCode == 87 || keyFaster) {
         pitch.step = n;
       }
     }
@@ -255,8 +268,12 @@ function fullscreenify(canvas) {
   var audioData = this.response;
   window.addEventListener("keydown", createPitchStep(0.08))
   window.addEventListener("keyup", createPitchStep(-0.083))
-  // btnUp.addEventListener("touchstart", createPitchStep(0.08));
- 
+  tStart.addEventListener("ontouchstart", createPitchStep(0.08));
+  //~ tStart.addEventListener("keyup", function(){createPitchStep(-0.08);console.log("touch")});
+  //~ tLeft.addEventListener("keyup", function(){createPitchStep(0.08);console.log("touch")});
+  //~ tRight.addEventListener("keyup", function(){createPitchStep(-0.08);console.log("touch")});
+  
+  
 //######################################################################	
   start.addEventListener("click", function(e){
 	if (!source) {
@@ -720,7 +737,7 @@ function fullscreenify(canvas) {
       canvas: canvas, render: render, update: update, stats: stats, step: step,
       images: ["background", "sprites"],
       keys: [
-        { keys: [KEY.LEFT,  KEY.A], mode: 'down', action: function() { keyLeft   = true;  } },
+        { keys: [KEY.LEFT,  KEY.A, KEY.TLEFT], mode: 'down', action: function() { keyLeft   = true;  } },
         { keys: [KEY.RIGHT, KEY.D], mode: 'down', action: function() { keyRight  = true;  } },
         { keys: [KEY.UP,    KEY.W], mode: 'down', action: function() { keyFaster = true;  } },
         { keys: [KEY.DOWN,  KEY.S], mode: 'down', action: function() { keySlower = true;  } },
