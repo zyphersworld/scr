@@ -1,9 +1,12 @@
 //GLOBALS
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioCtx = new AudioContext();	
+var audioCtxbg = new AudioContext();	
 var source = audioCtx.createBufferSource();
+var sourcebg = audioCtxbg.createBufferSource();
 var canvas = document.getElementById('canvas');
 var start = document.getElementById("start"),
+	controls = document.getElementById("hide")
 	stop = document.getElementById("stop"),
 	tStart = document.getElementById("touchStart"),
 	tLeft =  document.getElementById("touchLeft"),
@@ -11,9 +14,18 @@ var start = document.getElementById("start"),
 
 // EVENT LISTENERS
 window.addEventListener('resize', function () {resize(canvas);}, false);
-window.addEventListener('load',function () {getData();resize(canvas);},false);
-start.addEventListener("click", function(e){source.start(0);});
+window.addEventListener('load',function () {getData(); getBgMusicData(); resize(canvas);},false);
+start.addEventListener("click", function(e){source.start(0.1);sourcebg.start()});
+controls.addEventListener("click", function(e){
+	var x = document.getElementById("soundOps");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 
+	
+	});
 
 	
 //######################################################################
@@ -93,7 +105,28 @@ function getData() {
 			}
   request.send();
 }
-//######################################################################
+//~ //######################################################################
+
+function getBgMusicData() {
+  //source = audioCtx.createBufferSource();
+  requestbg = new XMLHttpRequest();
+  requestbg.open('GET', 'music/racer.mp3', true);
+  requestbg.responseType = 'arraybuffer';
+  requestbg.onload = function() {
+			var audioData = requestbg.response;
+			audioCtxbg.decodeAudioData(audioData, function(buffer) {
+			myBuffer = buffer;
+			sourcebg.buffer = myBuffer;
+			sourcebg.connect(audioCtxbg.destination);
+			sourcebg.loop = true;
+			},
+			function(e){"Error with decoding audio data" + e.err});
+			}
+  requestbg.send();
+}
+//~ //######################################################################
+
+
 
 //######################################################################
    function resize(canvas) {

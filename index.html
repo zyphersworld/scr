@@ -11,17 +11,23 @@
 
 	<!--RACE INFOMATION ON SCREEN-->
     <div id="hud" >
-      <span id="speed" class="hud"><span id="speed_value" class="value">0</span> mph</span>
-      
+		<div>
+      <span id="speed" class="hud"><span id="speed_value" class="value">0</span> Kph</span>
       <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span>&nbsp;</span>  
       <span id="last_lap_time"    class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span>&nbsp;</span> 
-      <span id="fast_lap_time"    class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span>&nbsp;</span> 
-      
+      <span id="fast_lap_time"    class="hud">Quick Time: <span id="fast_lap_time_value" class="value">0.0</span>&nbsp;</span> 
+      </div>
       <!--SOUND AND SCREEN CONTROLS-->
-      <input type="button" id="start" value="Start"  />
+      <div id="soundOps">
+      <input type="button" id="start" value="Start Sound"  />
       <input type="button" id="fs" onclick="openFullscreen();" value="Fullscreen" />
 	  <input type="button" id="xfs" onclick="closeFullscreen();" value="Exit Fullscreen" />
+<!--
 	  <input type="button" id="mute" class="on" />
+-->
+	  </div>
+	  <input type="button" id="hide" value="hide">
+	  <input type="button" id="mute" value="mute" class="on" />
     </div>
  
 	<!--MAIN CANVAS ON STAGE-->
