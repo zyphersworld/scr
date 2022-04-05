@@ -110,7 +110,7 @@ function getData() {
 function getBgMusicData() {
   //source = audioCtx.createBufferSource();
   requestbg = new XMLHttpRequest();
-  requestbg.open('GET', 'music/racer.mp3', true);
+  requestbg.open('GET', 'music/racer_mono.mp3', true);
   requestbg.responseType = 'arraybuffer';
   requestbg.onload = function() {
 			var audioData = requestbg.response;
