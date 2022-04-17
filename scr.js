@@ -529,7 +529,7 @@ function getBgMusicData() {
       addSprite(300, SPRITES.BILLBOARD09, 1.85);
       addSprite(350,  SPRITES.BILLBOARD09, 1.85);
       addSprite(400, SPRITES.BILLBOARD09, 1.85);
-      addSprite(450, SPRITES.BILLBOARD07, 1.85);dfr
+      addSprite(450, SPRITES.BILLBOARD07, 1.85);
       //~ addSprite(490, SPRITES.BILLBOARD04, 1.85);
       //~ addSprite(510, SPRITES.BILLBOARD05, 1.85);
       //~ addSprite(segments.length - 5, SPRITES.BILLBOARD08, 1.85);
