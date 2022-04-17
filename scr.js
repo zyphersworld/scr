@@ -5,28 +5,26 @@ var audioCtxbg = new AudioContext();
 var source = audioCtx.createBufferSource();
 var sourcebg = audioCtxbg.createBufferSource();
 var canvas = document.getElementById('canvas');
-var start = document.getElementById("start"),
-	controls = document.getElementById("hide")
-	stop = document.getElementById("stop"),
-	tStart = document.getElementById("touchStart"),
-	tLeft =  document.getElementById("touchLeft"),
-	tRight =  document.getElementById("touchRight");  
+var start = document.getElementById("start");
+var	controls = document.getElementById("hide");
+var	stop = document.getElementById("stop");
+var	tStart = document.getElementById("touchStart");
+var	tLeft =  document.getElementById("touchLeft");
+var	tRight =  document.getElementById("touchRight");  
+//######################################################################
+
+
 
 // EVENT LISTENERS
+//######################################################################
 window.addEventListener('resize', function () {resize(canvas);}, false);
 window.addEventListener('load',function () {getData(); getBgMusicData(); resize(canvas);},false);
 start.addEventListener("click", function(e){source.start(0.1);sourcebg.start()});
 controls.addEventListener("click", function(e){
-	var x = document.getElementById("soundOps");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-
-	
-	});
-
+											var x = document.getElementById("soundOps");
+											if (x.style.display === "none") {x.style.display = "block";} else {x.style.display = "none";}
+									});
+//######################################################################
 	
 //######################################################################
     var fps            = 60;                      // how many 'update' frames per second
@@ -55,7 +53,7 @@ controls.addEventListener("click", function(e){
     var rumbleLength   = 3;                       // number of segments per red/white rumble strip
     var trackLength    = null;                    // z length of entire track (computed)
     var lanes          = 2.666; //2.5                 // number of lanes
-    var fieldOfView    = 100;                     // angle (degrees) for field of view
+    var fieldOfView    = 90;                     // angle (degrees) for field of view
     var cameraHeight   = 1000;                    // z height of camera
     var cameraDepth    = null;                    // z distance camera is from screen (computed)
     var drawDistance   = 500;                     // number of segments to draw
@@ -70,8 +68,8 @@ controls.addEventListener("click", function(e){
     var decel          = -maxSpeed/3;             // 'natural' deceleration rate when neither accelerating, nor braking
     var offRoadDecel   = -maxSpeed/2;             // off road deceleration is somewhere in between
     var offRoadLimit   =  maxSpeed/4;             // limit when off road deceleration no longer applies (e.g. you can always go at least this speed even when off road)
-    var totalCars      = 25;					  // total number of cars on the road
-    var skillDiff	   = 0.5;                     
+    var totalCars      = 15;					  // total number of cars on the road
+    var skillDiff	   = 0;                     
     var currentLapTime = 0;                       // current lap time
     var lastLapTime    = null;                    // last lap time
 
@@ -522,20 +520,23 @@ function getBgMusicData() {
     function resetSprites() {
       var n, i;
 
-      addSprite(30,  SPRITES.BILLBOARD07, 1.85);
-      addSprite(140,  SPRITES.BILLBOARD06, 1.85);
-      addSprite(260,  SPRITES.BILLBOARD08, 1.85);
-      addSprite(380,  SPRITES.BILLBOARD09, 1.85);
-      addSprite(410, SPRITES.BILLBOARD01, 1.85);
-      addSprite(440, SPRITES.BILLBOARD02, 1.85);
-      //~ addSprite(460, SPRITES.BILLBOARD03, 1.85);
+      addSprite(0,  SPRITES.BILLBOARD09, 1.85);
+      addSprite(50,  SPRITES.BILLBOARD09, 1.85);
+      addSprite(100,  SPRITES.BILLBOARD09, 1.85);
+      addSprite(150,  SPRITES.BILLBOARD09, 1.85);
+      addSprite(200,  SPRITES.BILLBOARD07, 1.85);
+      addSprite(250,  SPRITES.BILLBOARD09, 1.85);
+      addSprite(300, SPRITES.BILLBOARD09, 1.85);
+      addSprite(350,  SPRITES.BILLBOARD09, 1.85);
+      addSprite(400, SPRITES.BILLBOARD09, 1.85);
+      addSprite(450, SPRITES.BILLBOARD07, 1.85);dfr
       //~ addSprite(490, SPRITES.BILLBOARD04, 1.85);
       //~ addSprite(510, SPRITES.BILLBOARD05, 1.85);
-      addSprite(segments.length - 25, SPRITES.BILLBOARD07, 1.85);
-      addSprite(segments.length - 25, SPRITES.BILLBOARD06,  1.85);
+      //~ addSprite(segments.length - 5, SPRITES.BILLBOARD08, 1.85);
+      //~ addSprite(segments.length - 25, SPRITES.BILLBOARD06,  1.85);
 
       for(n = 0 ; n < 550 ; n += 5) {
-        addSprite(n, SPRITES.BOULDER2,1.5);
+        addSprite(n, SPRITES.BOULDER2,1.3);
       }
 
   }
